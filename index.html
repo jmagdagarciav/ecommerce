@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Tienda Tech Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    #promoBanner {
+      background-color: #ff9800;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      gap: 10px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    #results-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+    }
+    #cart, #pedidoForm, #resenaForm, #pedidosRegistrados, #resenasPublicadas {
+      background-color: #fff;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      max-width: 600px;
+    }
+    h2, h3, h4 {
+      color: #333;
+      margin-bottom: 15px;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    p {
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner -->
+  <div id="promoBanner">💥 20% de descuento esta semana 💥</div>
+
+  <!-- Búsqueda -->
+  <div class="search-container">
+    <input type="text" id="product-search" placeholder="Buscar producto">
+    <button onclick="searchProducts()">Buscar</button>
+    <select id="categoryFilter">
+      <option value="all">Todas</option>
+      <option value="Notebooks">Notebooks</option>
+      <option value="Smartphone">Smartphones</option>
+      <option value="Accesorios">Accesorios</option>
+    </select>
+    <button id="cartBtn">🛒 (<span id="cartCount">0</span>)</button>
+  </div>
+
+  <!-- Productos -->
+  <div id="results-container"></div>
+
+  <!-- Carrito -->
+  <div id="cart" class="hidden">
+    <button id="closeCart">X</button>
+    <h2>Carrito</h2>
+    <ul id="cartItems"></ul>
+    <p>Total: $<span id="cartTotal">0</span></p>
+    <button id="payBtn">Pagar</button>
+
+    <!-- Formulario de pago -->
+    <div id="paymentForm" class="hidden">
+      <h3>Pago con tarjeta</h3>
+      <input type="text" id="cardNumber" placeholder="Número de tarjeta" maxlength="16">
+      <input type="text" id="cardName" placeholder="Nombre del titular">
+      <input type="text" id="expiry" placeholder="MM/AA" maxlength="5">
+      <input type="text" id="cvv" placeholder="CVV" maxlength="3">
+      <button id="submitPayment">Confirmar</button>
+    </div>
+  </div>
+
+  <!-- Pregunta 3: Formulario de registro de pedido -->
+  <div id="pedidoForm">
+    <h2>Registrar Pedido</h2>
+    <form method="POST" action="procesar_pedido.php">
+      <input type="text" name="descripcion" placeholder="Descripción del pedido" required>
+      <input type="text" name="tipo" placeholder="Tipo de pedido" required>
+      <input type="text" name="producto" placeholder="Producto" required>
+      <input type="number" name="unidades" min="1" placeholder="Unidades" required>
+      <textarea name="observaciones" placeholder="Observaciones"></textarea>
+      <button type="submit" name="registrar_pedido">Registrar Pedido</button>
+    </form>
+  </div>
+
+  <!-- Pregunta 1: Formulario de reseña -->
+  <div id="resenaForm">
+    <h2>Dejar Reseña</h2>
+    <form method="POST" action="reviews.php">
+      <input type="text" name="producto" placeholder="Producto a reseñar" required>
+      <input type="text" name="usuario" placeholder="Tu nombre" required>
+      <select name="calificacion" required>
+        <option value="">Calificación</option>
+        <option value="1">1 estrella</option>
+        <option value="2">2 estrellas</option>
+        <option value="3">3 estrellas</option>
+        <option value="4">4 estrellas</option>
+        <option value="5">5 estrellas</option>
+      </select>
+      <textarea name="comentario" placeholder="Escribe tu comentario" required></textarea>
+      <button type="submit" name="enviar_resena">Enviar Reseña</button>
+    </form>
+  </div>
+
+  <!-- Mostrar pedidos registrados (Pregunta 4) -->
+  <div id="pedidosRegistrados">
+    <h3>Pedidos Registrados</h3>
+    <?php if (file_exists('procesar_pedido.php')) include 'procesar_pedido.php'; ?>
+  </div>
+
+  <!-- Mostrar reseñas publicadas (Pregunta 1) -->
+  <div id="resenasPublicadas">
+    <h3>Reseñas</h3>
+    <?php if (file_exists('reviews.php')) include 'reviews.php'; ?>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+
+
+
+

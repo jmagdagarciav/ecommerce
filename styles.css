@@ -1,0 +1,154 @@
+/* General */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #f0f2f5;
+}
+
+/* Banner */
+#promoBanner {
+  background: #ff9800;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+}
+
+/* Búsqueda */
+.search-container {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.search-container input,
+.search-container select,
+.search-container button {
+  padding: 8px;
+  margin: 5px 3px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.search-container button {
+  background: #1976d2;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #1565c0;
+}
+
+/* Productos */
+#results-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 15px;
+}
+
+.product {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.product h3 {
+  margin: 8px 0;
+  font-size: 17px;
+}
+
+.product p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.product button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.product button:hover {
+  background: #388e3c;
+}
+
+/* Carrito */
+#cart {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  width: 280px;
+  background: #fff;
+  padding: 15px;
+  border-left: 1px solid #ccc;
+  box-shadow: -3px 0 10px rgba(0,0,0,0.2);
+  border-radius: 8px 0 0 8px;
+  z-index: 1000;
+}
+
+#cart button#closeCart {
+  background: #ff3333;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  float: right;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#cart ul {
+  list-style: none;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#cart li {
+  border-bottom: 1px solid #ddd;
+  padding: 4px 0;
+}
+
+/* Botones */
+#payBtn, #submitPayment {
+  background: #1976d2;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 8px;
+}
+
+#payBtn:hover, #submitPayment:hover {
+  background: #1565c0;
+}
+
+/* Formulario de pago */
+#paymentForm input {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Oculto */
+.hidden {
+  display: none;
+}
+
+
